@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol NibViewController {
-    associatedtype ViewType: NibView
+    associatedtype ViewType: NibLoadable
 }
 
 public extension NibViewController where Self: UIViewController {
