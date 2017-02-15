@@ -24,15 +24,13 @@ public struct IBNibLoader<NibLoadableView: NibLoadable> where NibLoadableView: U
     }
     
     public func initWithFrame() {
-        #if TARGET_INTERFACE_BUILDER
-            let nibView = type(of: view).fromNib()
-            copyProperties(to: nibView)
-            SubviewsCopier.copySubviewReferences(from: nibView, to: view)
-            
-            nibView.frame = view.bounds
-            nibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            view.addSubview(nibView)
-        #endif
+        let nibView = type(of: view).fromNib()
+        copyProperties(to: nibView)
+        SubviewsCopier.copySubviewReferences(from: nibView, to: view)
+        
+        nibView.frame = view.bounds
+        nibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(nibView)
     }
     
     public func prepareForInterfaceBuilder() {
@@ -46,10 +44,8 @@ public struct IBNibLoader<NibLoadableView: NibLoadable> where NibLoadableView: U
     }
     
     public func setValue(_ value: Any?, forKeyPath keyPath: String) {
-        #if TARGET_INTERFACE_BUILDER
-            guard let subview = value as? UIView else { return }
-            SubviewsCopier.store(subview: subview, forKeyPath: keyPath, of: view)
-        #endif
+        guard let subview = value as? UIView else { return }
+        SubviewsCopier.store(subview: subview, forKeyPath: keyPath, of: view)
     }
     
     
@@ -75,22 +71,21 @@ public struct IBNibLoader<NibLoadableView: NibLoadable> where NibLoadableView: U
     
 }
 
-#if TARGET_INTERFACE_BUILDER
-    fileprivate struct SubviewsCopier {
-        
-        static var viewKeyPathsForSubviews = [UIView: [String: UIView]]()
-        
-        static func store(subview: UIView, forKeyPath keyPath: String, of view: UIView) {
-            if viewKeyPathsForSubviews[view] == nil {
-                viewKeyPathsForSubviews[view] = [keyPath: subview]
-            } else {
-                viewKeyPathsForSubviews[view]?[keyPath] = subview
-            }
-        }
-        
-        static func copySubviewReferences(from view: UIView, to otherView: UIView) {
-            viewKeyPathsForSubviews[view]?.forEach { otherView.setValue($0.value, forKeyPath: $0.key) }
-            viewKeyPathsForSubviews[view] = nil
+
+fileprivate struct SubviewsCopier {
+    
+    static var viewKeyPathsForSubviews = [UIView: [String: UIView]]()
+    
+    static func store(subview: UIView, forKeyPath keyPath: String, of view: UIView) {
+        if viewKeyPathsForSubviews[view] == nil {
+            viewKeyPathsForSubviews[view] = [keyPath: subview]
+        } else {
+            viewKeyPathsForSubviews[view]?[keyPath] = subview
         }
     }
-#endif
+    
+    static func copySubviewReferences(from view: UIView, to otherView: UIView) {
+        viewKeyPathsForSubviews[view]?.forEach { otherView.setValue($0.value, forKeyPath: $0.key) }
+        viewKeyPathsForSubviews[view] = nil
+    }
+}

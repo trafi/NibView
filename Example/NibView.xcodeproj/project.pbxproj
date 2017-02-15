@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3254B091E54C4820039D644 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA1EB1E4E54700003A30D /* NibView.swift */; };
 		D396D4BD1E4F45B100C5E25E /* CardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396D4BC1E4F45B100C5E25E /* CardDetailsViewController.swift */; };
 		D396D4BF1E4F46A800C5E25E /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396D4BE1E4F46A800C5E25E /* CardDetailsView.swift */; };
 		D396D4C11E4F472C00C5E25E /* CardDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D396D4C01E4F472C00C5E25E /* CardDetailsView.xib */; };
@@ -20,7 +21,6 @@
 		D3FCA1E41E4E545A0003A30D /* NibView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FCA1C31E4E53C60003A30D /* NibView.framework */; };
 		D3FCA1E51E4E545A0003A30D /* NibView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3FCA1C31E4E53C60003A30D /* NibView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3FCA1ED1E4E54700003A30D /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA1EA1E4E54700003A30D /* NibLoadable.swift */; };
-		D3FCA1EE1E4E54700003A30D /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA1EB1E4E54700003A30D /* NibView.swift */; };
 		D3FCA1EF1E4E54700003A30D /* NibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA1EC1E4E54700003A30D /* NibViewController.swift */; };
 		D3FCA1F31E4E568B0003A30D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA1F21E4E568B0003A30D /* CardView.swift */; };
 		D3FCA1F51E4E56B00003A30D /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FCA1F41E4E56B00003A30D /* CardView.xib */; };
@@ -66,7 +66,7 @@
 		D3FCA1DE1E4E544C0003A30D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3FCA1E01E4E544C0003A30D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3FCA1EA1E4E54700003A30D /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
-		D3FCA1EB1E4E54700003A30D /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		D3FCA1EB1E4E54700003A30D /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibView.swift; path = ../NibView.swift; sourceTree = "<group>"; };
 		D3FCA1EC1E4E54700003A30D /* NibViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibViewController.swift; sourceTree = "<group>"; };
 		D3FCA1F21E4E568B0003A30D /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		D3FCA1F41E4E56B00003A30D /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
@@ -285,7 +285,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3FCA1EF1E4E54700003A30D /* NibViewController.swift in Sources */,
-				D3FCA1EE1E4E54700003A30D /* NibView.swift in Sources */,
 				D3F882C21E4F86CE005C19FF /* NibLoader.swift in Sources */,
 				D3FCA1ED1E4E54700003A30D /* NibLoadable.swift in Sources */,
 			);
@@ -297,6 +296,7 @@
 			files = (
 				D3D711941E4E5A4500F33BE8 /* CardsListViewController.swift in Sources */,
 				D396D4BD1E4F45B100C5E25E /* CardDetailsViewController.swift in Sources */,
+				D3254B091E54C4820039D644 /* NibView.swift in Sources */,
 				D396D4BF1E4F46A800C5E25E /* CardDetailsView.swift in Sources */,
 				D3FCA1F31E4E568B0003A30D /* CardView.swift in Sources */,
 				D3FCA1D51E4E544C0003A30D /* AppDelegate.swift in Sources */,
