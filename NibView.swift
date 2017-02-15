@@ -6,7 +6,7 @@
 //  Copyright © 2016 Trafi. All rights reserved.
 //
 
-import UIKit
+import NibView
 
 open class NibView: UIView, NibLoadable {
     
