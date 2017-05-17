@@ -90,9 +90,9 @@ class MyView: SomeBaseView, NibLoadable {
 
 # Installation
 ## [Carthage](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application)
-Add the following line to your Cartfile:
+Drag [`NibView.swift`](NibView.swift) file into your Xcode project and add the following line to your Cartfile:
 ```
 github "Trafi/NibView"
 ```
 ## Manual
-Drag the [`Sources`](Sources) folder into your Xcode project.
+Drag the [`Sources`](Sources) folder and [`NibView.swift`](NibView.swift) file into your Xcode project.
