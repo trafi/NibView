@@ -94,5 +94,13 @@ Drag [`NibView.swift`](NibView.swift) file into your Xcode project and add the f
 ```
 github "Trafi/NibView"
 ```
+
+## [Swift Package Manager](https://swift.org/package-manager/)
+```
+dependencies: [
+    .package(url: "https://github.com/trafi/NibView.git", .upToNextMajor(from: "2.0.0"))
+]
+```
+
 ## Manual
 Drag the [`Sources`](Sources) folder and [`NibView.swift`](NibView.swift) file into your Xcode project.

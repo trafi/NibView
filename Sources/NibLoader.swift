@@ -6,6 +6,8 @@
 //  Copyright © 2016 Trafi. All rights reserved.
 //
 
+import UIKit
+
 // MARK: - Public
 
 public extension NibLoadable where Self: UIView {
