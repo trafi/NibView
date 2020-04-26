@@ -3,13 +3,20 @@
 
 import PackageDescription
 
+let files = [
+    "Sources/NibLoadable.swift",
+    "Sources/NibLoader.swift",
+    "Sources/NibViewController.swift",
+    "NibView.swift"
+]
+
 let package = Package(
     name: "NibView",
     products: [
         .library(name: "NibView", targets: ["NibView"])
     ],
     targets: [
-        .target(name: "NibView", dependencies: [], path: "Sources")
+        .target(name: "NibView", path: "", sources: files)
     ],
     swiftLanguageVersions: [.v5]
 )
