@@ -102,6 +102,5 @@ dependencies: [
 ]
 ```
 
-## []
 ## Manual
 Drag the [`Sources`](Sources) folder and [`NibView.swift`](NibView.swift) file into your Xcode project.
