@@ -21,6 +21,7 @@ public struct IBNibLoader<NibLoadableView: NibLoadable> where NibLoadableView: U
         
         let nibView = type(of: view).fromNib()
         copyProperties(to: nibView)
+        copyConstraints(to: nibView)
         
         return nibView
     }
@@ -28,6 +29,7 @@ public struct IBNibLoader<NibLoadableView: NibLoadable> where NibLoadableView: U
     public func initWithFrame() {
         let nibView = type(of: view).fromNib()
         copyProperties(to: nibView)
+        copyConstraints(to: nibView)
         SubviewsCopier.copySubviewReferences(from: nibView, to: view)
         
         nibView.frame = view.bounds
@@ -69,6 +71,28 @@ public struct IBNibLoader<NibLoadableView: NibLoadable> where NibLoadableView: U
         nibView.clipsToBounds = view.clipsToBounds
         nibView.alpha = view.alpha
         nibView.isHidden = view.isHidden
+    }
+    
+    private func copyConstraints(to nibView: UIView) {
+        let attributesToCopy: [NSLayoutConstraint.Attribute] = [.height, .width]
+        let constraintsToCopy = view.constraints.filter {
+            return attributesToCopy.contains($0.firstAttribute)
+        }
+        for constraint in constraintsToCopy {
+            var secondItem: Any? = nil
+            if attributesToCopy.contains(constraint.secondAttribute) {
+                secondItem = nibView
+            }
+            NSLayoutConstraint(
+                item: nibView,
+                attribute: constraint.firstAttribute,
+                relatedBy: constraint.relation,
+                toItem: secondItem,
+                attribute: constraint.secondAttribute,
+                multiplier: constraint.multiplier,
+                constant: constraint.constant
+            ).isActive = true
+        }
     }
     
 }
