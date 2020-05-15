@@ -21,6 +21,7 @@ public struct IBNibLoader<NibLoadableView: NibLoadable> where NibLoadableView: U
         
         let nibView = type(of: view).fromNib()
         copyProperties(to: nibView)
+        copyConstraints(to: nibView)
         
         return nibView
     }
@@ -71,6 +72,20 @@ public struct IBNibLoader<NibLoadableView: NibLoadable> where NibLoadableView: U
         nibView.isHidden = view.isHidden
     }
     
+    private func copyConstraints(to nibView: UIView) {
+        nibView.addConstraints(
+            view.constraints.map {
+                NSLayoutConstraint(
+                    item: $0.firstItem === view ? nibView : $0.firstItem as Any,
+                    attribute: $0.firstAttribute,
+                    relatedBy: $0.relation,
+                    toItem: $0.secondItem === view ? nibView : $0.secondItem,
+                    attribute: $0.secondAttribute,
+                    multiplier: $0.multiplier,
+                    constant: $0.constant)
+            }
+        )
+    }
 }
 
 
