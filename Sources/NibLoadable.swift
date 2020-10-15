@@ -24,11 +24,11 @@ import UIKit
  
  *Optionally* provide custom nib name (defaults to type name):
  
-     static var nibName: String { return "MyCustomView" }
+     class var nibName: String { return "MyCustomView" }
 
  *Optionally* provide custom bundle (defaults to class location):
  
-     static var bundle: Bundle { return Bundle(for: self) }
+     class var bundle: Bundle { return Bundle(for: self) }
  
  # Refencing from IB
  

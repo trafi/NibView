@@ -17,6 +17,10 @@ open class NibView: UIView, NibLoadable {
         return String(describing: self)
     }
     
+    open class var bundle: Bundle {
+        return Bundle(for: self)
+    }
+    
     open override func awakeAfter(using aDecoder: NSCoder) -> Any? {
         return nibLoader.awakeAfter(using: aDecoder, super.awakeAfter(using: aDecoder))
     }
