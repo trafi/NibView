@@ -7,7 +7,8 @@
 //
 
 #if canImport(NibView)
-import NibView #endif
+import NibView
+#endif
 import UIKit
 
 open class NibView: UIView, NibLoadable {
