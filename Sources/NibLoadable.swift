@@ -25,6 +25,10 @@ import UIKit
  *Optionally* provide custom nib name (defaults to type name):
  
      class var nibName: String { return "MyCustomView" }
+
+ *Optionally* provide custom bundle (defaults to class location):
+ 
+     class var bundle: Bundle { return Bundle(for: self) }
  
  # Refencing from IB
  
@@ -84,6 +88,7 @@ import UIKit
  */
 public protocol NibLoadable: class {
     static var nibName: String { get }
+    static var bundle: Bundle { get }
 }
 
 // MARK: - From Nib
@@ -94,8 +99,12 @@ public extension NibLoadable where Self: UIView {
          return String(describing: self)
     }
     
+    static var bundle: Bundle {
+        return Bundle(for: self)
+    }
+    
     static func fromNib() -> Self {
-        guard let nib = Bundle(for: self).loadNibNamed(nibName, owner: nil, options: nil) else {
+        guard let nib = self.bundle.loadNibNamed(nibName, owner: nil, options: nil) else {
             fatalError("Failed loading the nib named \(nibName) for 'NibLoadable' view of type '\(self)'.")
         }
         guard let view = (nib.first { $0 is Self }) as? Self else {
@@ -104,4 +113,3 @@ public extension NibLoadable where Self: UIView {
         return view
     }
 }
-

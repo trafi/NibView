@@ -7,13 +7,18 @@
 //
 
 #if canImport(NibView)
-import NibView #endif
+import NibView
+#endif
 import UIKit
 
 open class NibView: UIView, NibLoadable {
     
     open class var nibName: String {
         return String(describing: self)
+    }
+    
+    open class var bundle: Bundle {
+        return Bundle(for: self)
     }
     
     open override func awakeAfter(using aDecoder: NSCoder) -> Any? {
